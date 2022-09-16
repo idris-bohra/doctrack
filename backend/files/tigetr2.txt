@@ -1,0 +1,10 @@
+Name					Class						Marks					
+Virat Kohli					X						400					
+Rohit Sharma					5						450					
+Tahant					7						200					
+Dhoni					12						300					
+Rahane					8						378					
+Shami					5						379					
+Pant					2						40					
+																
+Smith					8						128					
