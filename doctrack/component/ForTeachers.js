@@ -33,7 +33,7 @@ const ForTeachers = () => {
 
         <Text style={styles.dash}>Welcome to Dashbaord</Text>
 
-        <View style={{marginTop : 30}}>
+        <View style={{marginTop : 10}}>
           <Text style={styles.heading1}>Faculty Name</Text>
           <Text style={styles.heading2}>{teachername}</Text>
         </View>
@@ -74,7 +74,7 @@ const ForTeachers = () => {
                 alignItems: 'center',
                 justifyContent: 'center',
                 borderRadius: 3,
-                padding: 15,
+                padding: 5,
                 marginTop : 0,
                 
               }}>
@@ -99,6 +99,8 @@ const styles = StyleSheet.create({
     flex:1,
     alignItems: 'center',
     justifyContent: 'center',
+    padding: 10,
+    marginTop:0
   },
   heading :{
     
@@ -116,11 +118,11 @@ const styles = StyleSheet.create({
   track : {
     color : '#034f84',
     fontWeight : 'bold',
-    fontSize:50
+    fontSize:35
   },
   doc : {
     color : '#618685',
-    fontSize:50,
+    fontSize:35,
     fontWeight:'bold'
   },
   sname : {
@@ -137,7 +139,8 @@ const styles = StyleSheet.create({
     color : '#034f84',
     fontWeight : 'bold',
     fontSize : 20,
-    textAlign : 'center'
+    textAlign : 'center',
+    marginRight:30
 
   },
   view1 : {
@@ -155,7 +158,7 @@ const styles = StyleSheet.create({
     borderWidth : 3,
     borderStyle : 'solid',
     borderColor : 'white',
-    padding : 50,
+    padding : 30,
     borderTopEndRadius : 100,
     
   },
@@ -192,7 +195,7 @@ const styles = StyleSheet.create({
     color : '#034f84',
   },
   section : {
-    marginTop : 10
+    marginTop : 5
   }
 
 })

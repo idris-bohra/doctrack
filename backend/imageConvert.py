@@ -2,7 +2,8 @@ import requests
 import json
 import sys
 import os
-url = 'https://app.nanonets.com/api/v2/OCR/Model/5a4912f0-5840-4358-97e9-a2f607719f5e/LabelFile/?async=false'
+
+url = 'https://app.nanonets.com/api/v2/OCR/Model/2270a4bd-246f-478b-8b87-0357a2aa3c08/LabelFile/?async=false'
 print(str(sys.argv[1]))
 filepath2 = str(sys.argv[1])
 imgname = str(sys.argv[2])
@@ -10,7 +11,7 @@ imgname = str(sys.argv[2])
 
 data = {'file': open(filepath2, 'rb')}
 
-response = requests.post(url, auth=requests.auth.HTTPBasicAuth('SSWEGFwH1LwuFoVW16S0iY9Y0BITt7UH', ''), files=data)
+response = requests.post(url, auth=requests.auth.HTTPBasicAuth('UR5EbJznKr4t4w4ojhW00taj50WPGfcI', ''), files=data)
 
 print(response.text)
 

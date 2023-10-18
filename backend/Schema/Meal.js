@@ -4,8 +4,6 @@ var Schema = mongoose.Schema;
 
 const Meal = new Schema({
 
-    
-
 
         schoolid: { type: mongoose.Schema.Types.ObjectId, ref: 'school', required: true },
         teacherid : {type : String, required : true},
@@ -15,6 +13,11 @@ const Meal = new Schema({
         meal: [
             {
                 type: Object, 
+                db:[
+                    {
+                        type : mongoose.Schema.Types.ObjectId
+                    }
+                ],
                 required: true             
             }
         ]

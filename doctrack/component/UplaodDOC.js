@@ -23,7 +23,6 @@ const Temp = () => {
     setimage(result.uri)
     setfinal(result)
     console.log("result",result);
-
   }
 
   const uploaded = ()=>{
@@ -48,7 +47,7 @@ const Temp = () => {
     form.append('teacherpassword', teacherpassword)
     form.append('teachermongoid', _id)
 
-    axios.post("http://192.168.1.147:5000/addform" , form, {headers: { 'content-type': 'multipart/form-data;boundary=<calculated when request is sent>'}}).then((data)=>{
+    axios.post("http://192.168.1.231:5000/addform" , form, {headers: { 'content-type': 'multipart/form-data;boundary=<calculated when request is sent>'}}).then((data)=>{
 
       console.log(data);
       if(data)
@@ -84,7 +83,7 @@ const Temp = () => {
 
 
 
-    axios.post("http://192.168.1.147:5000/formdata" , form, {headers: { 'content-type': 'multipart/form-data;boundary=<calculated when request is sent>'}}).then((data)=>{
+    axios.post("http://192.168.1.231:5000/formdata" , form, {headers: {'Content-Type': 'multipart/form-data' }}).then((data)=>{
       console.log('converted' , data);
       if(data)
       {

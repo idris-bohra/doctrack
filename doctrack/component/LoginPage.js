@@ -20,7 +20,7 @@ const Login = (props) => {
     const submitted = ()=>{
         console.log('submitted = ', form)
 
-        axios.post(`http://192.168.1.147:5000/loginteacher`,  form , {headers : {"Content-Type" : "application/json" }}).then((result)=>{
+        axios.post(`http://192.168.1.231:5000/loginteacher`,  form , {headers : {"Content-Type" : "application/json" }}).then((result)=>{
 
            console.log('data = ', result)
             dispatch(loginactionforteachers(result))
@@ -33,10 +33,6 @@ const Login = (props) => {
         }); 
 
     } 
-
-        
-
-        
 
   return (
     <>

@@ -44,6 +44,7 @@ app.use("/", TeacherRoutes);
 // Storing files using Multer
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
+        console.log('file = ', file)
         console.log(__dirname)
       cb(null, path.join(__dirname , '/uploads'))
     },
@@ -56,15 +57,45 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage })
 
 
+//Converting the image into digital format using OCR technology.
+app.post('/formdata' , upload.array('file'),(req,res)=>{
+    
+    // console.log('hello', req.files[0])
+    // console.log('req.body', req.body)
 
+    const faizan = spawn('python', ['hello.py'])
 
+    const childPython = spawn('python',['imageConvert.py', `${ req.files[0]?.path}`, `${req.files[0]?.originalname}`]);
+
+    childPython.stdout.on('data',(data)=>{
+        console.log(`stdout:${data}`);
+    });
+
+    childPython.stderr.on('data',(data)=>{
+        console.error(`stderr:${data}`);
+    });
+
+    childPython.on('close',(code)=>{
+        console.log(__dirname)
+        const name = req.files[0].originalname.split(".")[0];
+        console.log('name = ',name)
+        let text2 = ".txt";
+        let result = name.concat(text2);
+        console.log('nameresult = ', result)
+        const pathname = path.join(`http://localhost:5000/public/`,result)
+        open(pathname);
+        return res.status(200).json({'obj' : req.body, 'converted' : true})
+
+    });
+
+})
 
 // API FUNCTION
 app.post('/addform' ,upload.array('file'), (req,res)=>{
     console.log('getting')
     console.log(req.body)
     console.log(req.files[0])
-    const name = req.files[0].originalname.split(".")[0];
+    const name = req.files[0]?.originalname.split(".")[0];
     console.log('name = ',name)
     let text2 = ".txt";
     let result = name.concat(text2);
@@ -234,36 +265,14 @@ app.post('/addform' ,upload.array('file'), (req,res)=>{
 
 })
 
-//Converting the image into digital format using OCR technology.
-app.post('/formdata' , upload.array('file'),(req,res)=>{
-    
-    console.log('hello', req.files[0])
-    console.log('req.body', req.body)
-    const childPython = spawn('python',['imageConvert.py', `${ req.files[0].path}`, `${req.files[0].originalname}`]);
 
-    childPython.stdout.on('data',(data)=>{
-        console.log(`stdout:${data}`);
-    });
 
-    childPython.stderr.on('data',(data)=>{
-        console.error(`stderr:${data}`);
-    });
 
-    childPython.on('close',(code)=>{
-        console.log(__dirname)
-        const name = req.files[0].originalname.split(".")[0];
-        console.log('name = ',name)
-        let text2 = ".txt";
-        let result = name.concat(text2);
-        console.log('nameresult = ', result)
-        const pathname = path.join(`http://localhost:5000/public/`,result)
-        open(pathname);
-        return res.status(200).json({'obj' : req.body, 'converted' : true})
 
-    });
 
+
+
+app.get('/hello', (req,res)=>{
+    console.log(req.body)
+    return res.status(200).json({"hello":"idris"});
 })
-
-
-
-
